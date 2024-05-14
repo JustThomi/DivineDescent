@@ -1,0 +1,121 @@
+[gd_scene load_steps=14 format=3 uid="uid://dqtq6a8gfnla4"]
+
+[ext_resource type="Script" path="res://src/actors/player/player.gd" id="1_oltg7"]
+[ext_resource type="PackedScene" uid="uid://cq0mjoxn0ksg3" path="res://src/utils/hit_box.tscn" id="2_3vxe5"]
+[ext_resource type="Texture2D" uid="uid://c0ptddlhs5eve" path="res://assets/player/vampire_v1_1.png" id="2_c5jtm"]
+[ext_resource type="Texture2D" uid="uid://cgjobg0ky2h0b" path="res://assets/player/vampire_v1_2.png" id="3_qrde2"]
+[ext_resource type="Texture2D" uid="uid://swps7a88ljcy" path="res://assets/player/vampire_v1_3.png" id="4_gqun7"]
+[ext_resource type="Texture2D" uid="uid://dmpp0nnb15xun" path="res://assets/player/vampire_v1_4.png" id="5_p20gg"]
+[ext_resource type="PackedScene" uid="uid://bpssre56um4h" path="res://src/actors/player/weapons/weapon.tscn" id="7_jjnjq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65fq4"]
+size = Vector2(9, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swy5t"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c5jtm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qrde2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gqun7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p20gg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c5jtm")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw3gj"]
+size = Vector2(9, 13)
+
+[sub_resource type="Animation" id="Animation_p7yfm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_a411g"]
+resource_name = "roll"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3k52b"]
+_data = {
+"RESET": SubResource("Animation_p7yfm"),
+"roll": SubResource("Animation_a411g")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_oltg7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_65fq4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_swy5t")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="HitBox" parent="." instance=ExtResource("2_3vxe5")]
+visible = false
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_pw3gj")
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="Sword" parent="Weapons" instance=ExtResource("7_jjnjq")]
+rotation_offset = 200
+
+[node name="RollTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3k52b")
+}
+
+[connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
+
+[editable path="HitBox"]
