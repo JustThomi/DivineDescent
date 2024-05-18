@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://n5xy5c6413op"]
+
+[ext_resource type="Script" path="res://src/actors/mobs/skeleton.gd" id="1_m5dls"]
+[ext_resource type="Texture2D" uid="uid://c0egbd4xnwk4e" path="res://assets/mobs/skeleton/skelet_idle_anim_f0.png" id="1_rmk5v"]
+[ext_resource type="Texture2D" uid="uid://c55m68v8natum" path="res://assets/mobs/skeleton/skelet_idle_anim_f1.png" id="2_5d2df"]
+[ext_resource type="Texture2D" uid="uid://chk08dwxm73b3" path="res://assets/mobs/skeleton/skelet_idle_anim_f2.png" id="3_72pxj"]
+[ext_resource type="Texture2D" uid="uid://cj8dqtwkol0yb" path="res://assets/mobs/skeleton/skelet_idle_anim_f3.png" id="4_c3y7m"]
+[ext_resource type="Texture2D" uid="uid://d00a8gd48irnu" path="res://assets/mobs/skeleton/skelet_run_anim_f0.png" id="5_3lshs"]
+[ext_resource type="Texture2D" uid="uid://jw7bcvpats57" path="res://assets/mobs/skeleton/skelet_run_anim_f1.png" id="6_nml33"]
+[ext_resource type="Texture2D" uid="uid://vxlp777f0ywy" path="res://assets/mobs/skeleton/skelet_run_anim_f2.png" id="7_hikb4"]
+[ext_resource type="Texture2D" uid="uid://bef3cp1lp5rtx" path="res://assets/mobs/skeleton/skelet_run_anim_f3.png" id="8_6j2fl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt2r7"]
+size = Vector2(8, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxnn6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rmk5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5d2df")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_72pxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c3y7m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3lshs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nml33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hikb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6j2fl")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Skeleton" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_m5dls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_rt2r7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rxnn6")
+animation = &"idle"
+autoplay = "idle"

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Roguelite MVP"
+config/name="Divine Descent"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.145098, 0.0745098, 0.101961, 1)
 config/icon="res://icon.svg"
@@ -56,6 +56,8 @@ special_attack={
 [layer_names]
 
 2d_physics/layer_1="Environment"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Mob"
 
 [rendering]
 

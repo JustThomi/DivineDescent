@@ -1,10 +1,13 @@
 extends Node2D
 class_name Weapon
 
+@onready var animation := $AnimationPlayer
+
 @export var ranged_weapon: bool = false
 @export var rotation_offset: int = 0
 
 var can_special_attack: bool = true
+var basic_attack_damage = 10
 
 func move(mouse_direction: Vector2) -> void:
 	if ranged_weapon:
@@ -17,7 +20,10 @@ func move(mouse_direction: Vector2) -> void:
 			scale.y = 1
 
 func basic_attack():
-	print("basic AF")
+	animation.play("swing")
 
 func special_attack():
 	print("DAMN SON THAT'S SPECIAL")
+
+func _on_hurt_box_body_entered(body):
+	body.take_damage(basic_attack_damage)

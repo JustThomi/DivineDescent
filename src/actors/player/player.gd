@@ -3,8 +3,9 @@ extends CharacterBody2D
 # TODO add camera script for better experience
 @onready var animation := $AnimatedSprite2D
 @onready var hitbox := $HitBox
+@onready var weapon_holder := $Weapons
 
-# TEMP ANIM FOR TESTING ROLL
+# TEMP ANIM FOR TESTING 
 @onready var animation_player := $AnimationPlayer
 
 const SPEED := 100
@@ -63,7 +64,8 @@ func _ready():
 
 func _physics_process(delta):
 	get_input()
-	weapon.move(get_global_mouse_position())
+#	weapon.move(get_global_mouse_position())
+	weapon_holder.look_at(get_global_mouse_position())
 	
 	match state:
 		IDLE:

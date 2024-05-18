@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj8dqtwkol0yb"
-path="res://.godot/imported/skelet_idle_anim_f3.png-c4b81f0edf759485e4b0b8cc6fa2ba16.ctex"
+uid="uid://vxlp777f0ywy"
+path="res://.godot/imported/skelet_run_anim_f2.png-8ba31d03dffd100995986c713828c515.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/0x72_DungeonTilesetII_v1.7/frames/skelet_idle_anim_f3.png"
-dest_files=["res://.godot/imported/skelet_idle_anim_f3.png-c4b81f0edf759485e4b0b8cc6fa2ba16.ctex"]
+source_file="res://assets/mobs/skeleton/skelet_run_anim_f2.png"
+dest_files=["res://.godot/imported/skelet_run_anim_f2.png-8ba31d03dffd100995986c713828c515.ctex"]
 
 [params]
 
