@@ -15,6 +15,10 @@ config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.145098, 0.0745098, 0.101961, 1)
 config/icon="res://icon.svg"
 
+[display]
+
+mouse_cursor/custom_image="res://assets/interface/cursor.png"
+
 [input]
 
 left={

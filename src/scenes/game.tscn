@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://do1luax51qunj"]
+
+[ext_resource type="PackedScene" uid="uid://dqtq6a8gfnla4" path="res://src/actors/player/player.tscn" id="1_dfjed"]
+[ext_resource type="PackedScene" uid="uid://dkxp102s2g1x" path="res://src/scenes/dungeon/dungeon.tscn" id="1_gn6c4"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Dungeon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_gn6c4")]
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("1_dfjed")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
