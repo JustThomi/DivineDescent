@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://h7yrvcngu7lr"]
+[gd_scene load_steps=5 format=3 uid="uid://h7yrvcngu7lr"]
 
 [ext_resource type="TileSet" uid="uid://c52bn7uag64ou" path="res://assets/environment/env_tiles.tres" id="1_bspv8"]
 [ext_resource type="Script" path="res://src/scenes/dungeon/rooms/room.gd" id="1_wkh7s"]
+[ext_resource type="PackedScene" uid="uid://d1h0txnrog4yf" path="res://src/interactables/floor_exit.tscn" id="3_8ep2r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7nqg"]
 size = Vector2(30, 8)
@@ -21,6 +22,9 @@ tile_set = ExtResource("1_bspv8")
 format = 2
 layer_0/tile_data = PackedInt32Array(-458760, 0, 9, -458758, 0, 9, -458756, 0, 9, -458754, 0, 9, -524287, 0, 9, -524285, 0, 9, -524283, 0, 9, -524281, 0, 9, 196599, 327680, 9, 131080, 327680, 9, -393225, 327680, 9, -458744, 327680, 9, -458761, 262144, 6, -524280, 327680, 6, -65530, 524288, 6, 7, 524288, 6, 65540, 524288, 6, 131066, 524288, 6, 131065, 524288, 6, -65544, 524288, 6, -262151, 524288, 6, -327686, 524288, 6, -327680, 524288, 6, -327676, 524288, 6, -327675, 524288, 6, -262137, 524288, 6, -131066, 524288, 6, -131069, 524288, 6, 65534, 524288, 6, -196612, 524288, 6, 65537, 524288, 6, -65529, 458752, 7, -196602, 458752, 7, -65531, 458752, 7, 131064, 458752, 7, -7, 458752, 7, -262150, 458752, 7, 131079, 589824, 4)
 
+[node name="FloorExit" parent="." instance=ExtResource("3_8ep2r")]
+position = Vector2(-8, -57)
+
 [node name="Entrance" type="Marker2D" parent="."]
 position = Vector2(0, 84)
 
@@ -30,3 +34,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2(0, 76)
 shape = SubResource("RectangleShape2D_b7nqg")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

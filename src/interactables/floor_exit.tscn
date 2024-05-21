@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1h0txnrog4yf"]
+
+[ext_resource type="Texture2D" uid="uid://cygihkajss027" path="res://assets/environment/floor_exit.png" id="1_48wp4"]
+[ext_resource type="Script" path="res://src/interactables/floor_exit.gd" id="1_gw0h7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ts5b"]
+size = Vector2(16, 16)
+
+[node name="FloorExit" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_gw0h7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7ts5b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_48wp4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

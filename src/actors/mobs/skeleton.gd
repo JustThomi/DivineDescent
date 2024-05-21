@@ -1,10 +1,9 @@
 extends CharacterBody2D
 
 @onready var animation := $AnimatedSprite2D
-# FOR DEBUG ONLY
-@export var player : CharacterBody2D
+var player : CharacterBody2D
 
-const SPEED = 50.0
+const SPEED = 40.0
 var direction := Vector2.ZERO
 var health := 30
 
@@ -16,10 +15,9 @@ var state = RUN
 
 func take_damage(dmg : int):
 	health -= dmg
-	print("au")
 
 func get_player_direction():
-	direction = (player.position - position).normalized()
+	direction = (player.global_position - global_position).normalized()
 
 # flip sprite TEMP FIX
 func flip_sprite():
@@ -36,6 +34,10 @@ func run():
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
 	move_and_slide()
+
+# I promise this will be done better later
+func _ready():
+	player = get_parent().get_parent().get_parent().get_parent().get_node("Player")
 
 func _physics_process(_delta):
 	get_player_direction()

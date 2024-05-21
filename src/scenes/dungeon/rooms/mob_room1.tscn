@@ -33,6 +33,20 @@ collision_mask = 2
 position = Vector2(0, 42)
 shape = SubResource("RectangleShape2D_n857e")
 
-[node name="EnemieSpawns" type="Node2D" parent="."]
+[node name="EnemySpawns" type="Node2D" parent="."]
 
-[node name="Marker2D" type="Marker2D" parent="EnemieSpawns"]
+[node name="Marker2D" type="Marker2D" parent="EnemySpawns"]
+position = Vector2(-64, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="EnemySpawns"]
+position = Vector2(49, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="EnemySpawns"]
+position = Vector2(16, -18)
+
+[node name="Marker2D4" type="Marker2D" parent="EnemySpawns"]
+position = Vector2(-32, -17)
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
