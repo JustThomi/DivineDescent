@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqtq6a8gfnla4"]
+[gd_scene load_steps=15 format=3 uid="uid://dqtq6a8gfnla4"]
 
 [ext_resource type="Script" path="res://src/actors/player/player.gd" id="1_oltg7"]
 [ext_resource type="PackedScene" uid="uid://cq0mjoxn0ksg3" path="res://src/utils/hit_box.tscn" id="2_3vxe5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgjobg0ky2h0b" path="res://assets/player/vampire_v1_2.png" id="3_qrde2"]
 [ext_resource type="Texture2D" uid="uid://swps7a88ljcy" path="res://assets/player/vampire_v1_3.png" id="4_gqun7"]
 [ext_resource type="Texture2D" uid="uid://dmpp0nnb15xun" path="res://assets/player/vampire_v1_4.png" id="5_p20gg"]
+[ext_resource type="PackedScene" uid="uid://djtfd838w130i" path="res://src/actors/player/weapons/staff.tscn" id="7_2325t"]
 [ext_resource type="PackedScene" uid="uid://bpssre56um4h" path="res://src/actors/player/weapons/weapon.tscn" id="7_jjnjq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65fq4"]
@@ -107,8 +108,12 @@ shape = SubResource("RectangleShape2D_pw3gj")
 
 [node name="Weapons" type="Node2D" parent="."]
 
+[node name="Staff" parent="Weapons" node_paths=PackedStringArray("player") instance=ExtResource("7_2325t")]
+position = Vector2(12, 8)
+player = NodePath("../..")
+
 [node name="Sword" parent="Weapons" instance=ExtResource("7_jjnjq")]
-rotation_offset = 200
+visible = false
 
 [node name="RollTimer" type="Timer" parent="."]
 

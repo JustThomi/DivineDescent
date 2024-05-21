@@ -17,6 +17,8 @@ var direction : Vector2
 var roll_vector : Vector2
 var weapon # will reference current equiped weapon 
 
+var health = 100
+
 # enum state machine, too lazy to do it right
 enum {
 	IDLE,
@@ -31,6 +33,9 @@ func flip_sprite():
 		animation.flip_h = true
 	elif direction.x > 0:
 		animation.flip_h = false
+
+func heal(hp):
+	health = min(hp + health, 100)
 
 func roll():
 	velocity = roll_vector * (ROLL_SPEED + SPEED)
@@ -64,8 +69,9 @@ func _ready():
 
 func _physics_process(delta):
 	get_input()
-#	weapon.move(get_global_mouse_position())
-	weapon_holder.look_at(get_global_mouse_position())
+	
+	if weapon.get_name() == "Sword":
+		weapon_holder.look_at(get_global_mouse_position())
 	
 	match state:
 		IDLE:

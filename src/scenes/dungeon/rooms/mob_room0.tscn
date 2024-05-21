@@ -38,4 +38,6 @@ shape = SubResource("RectangleShape2D_s17kn")
 [node name="Marker2D" type="Marker2D" parent="LootSpawns"]
 position = Vector2(-25, 7)
 
+[node name="LootContainer" type="Node2D" parent="."]
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

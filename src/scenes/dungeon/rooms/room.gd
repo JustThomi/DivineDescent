@@ -9,7 +9,9 @@ var enemy_locations : Node2D
 var enemy_container : Node2D
 var enemies : Array = [preload("res://src/actors/mobs/skeleton.tscn")]
 var loot_locations : Node2D
-#var loot : Array = [preload("res://src/interactables/potion.tscn")]
+var loot_container : Node2D
+var loot_items : Array = [preload("res://src/interactables/health_pickup.tscn")]
+
 
 func load_content():
 	if has_enemies:
@@ -17,6 +19,7 @@ func load_content():
 		enemy_container = get_node("EnemyContainer")
 	elif has_loot:
 		loot_locations = get_node("LootSpawns")
+		loot_container = get_node("LootContainer")
 
 func spawn_enemies():
 	for points in enemy_locations.get_children():
@@ -25,7 +28,10 @@ func spawn_enemies():
 		enemy_container.add_child(e)
 
 func spawn_loot():
-	pass
+	for points in loot_locations.get_children():
+		var l = loot_items[randi() % loot_items.size()].instantiate()
+		l.position = points.position
+		loot_container.add_child(l)
 
 func lock_doors():
 	player_detector.monitorable = false
@@ -33,12 +39,11 @@ func lock_doors():
 
 func _ready():
 	load_content()
+	if has_loot:
+		spawn_loot()
 
 # TODO: add boss room/special room logic
 func _on_player_detector_body_entered(_player):
 	if has_enemies:
 		call_deferred("spawn_enemies")
-	if has_loot:
-		spawn_loot()
-	
-	call_deferred("lock_doors")
+		call_deferred("lock_doors")
