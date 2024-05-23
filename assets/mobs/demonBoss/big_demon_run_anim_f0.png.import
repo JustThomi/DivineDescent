@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq7ojf1hofwpg"
-path="res://.godot/imported/big_demon_run_anim_f3.png-4fac22d2280be04076e29aa06bf97a1e.ctex"
+uid="uid://0rlnt54welwx"
+path="res://.godot/imported/big_demon_run_anim_f0.png-f91b8c72875dcf4a3886573596d82b21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f3.png"
-dest_files=["res://.godot/imported/big_demon_run_anim_f3.png-4fac22d2280be04076e29aa06bf97a1e.ctex"]
+source_file="res://assets/mobs/demonBoss/big_demon_run_anim_f0.png"
+dest_files=["res://.godot/imported/big_demon_run_anim_f0.png-f91b8c72875dcf4a3886573596d82b21.ctex"]
 
 [params]
 

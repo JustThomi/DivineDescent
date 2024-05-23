@@ -15,7 +15,10 @@ const ROLL_SPEED := 140
 
 var direction : Vector2
 var roll_vector : Vector2
-var weapon # will reference current equiped weapon 
+var weapon : Node2D # will reference current equiped weapon 
+
+var sword : Node2D
+var staff : Node2D 
 
 var health = 100
 
@@ -62,10 +65,23 @@ func get_input():
 	
 	if Input.is_action_just_pressed("special_attack"):
 		weapon.special_attack()
+	
+	if Input.is_action_just_pressed("weapon_1"):
+		weapon = sword
+		sword.show()
+		staff.hide()
+	
+	if Input.is_action_just_pressed("weapon_2"):
+		weapon = staff
+		weapon_holder.rotation = 0
+		sword.hide()
+		staff.show()
 
 func _ready():
 	randomize()
-	weapon = $Weapons.get_child(0)
+	sword = weapon_holder.get_child(0)
+	staff = weapon_holder.get_child(1)
+	weapon = sword
 
 func _physics_process(delta):
 	get_input()

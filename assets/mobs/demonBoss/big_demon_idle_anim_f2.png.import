@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtlvamucrwc0c"
-path="res://.godot/imported/big_demon_idle_anim_f3.png-8fa810558cbcbc6d0b1e609f9255cd76.ctex"
+uid="uid://i313v0vk4htp"
+path="res://.godot/imported/big_demon_idle_anim_f2.png-fc45978147acef20809115ebebe2cba6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/0x72_DungeonTilesetII_v1.7/frames/big_demon_idle_anim_f3.png"
-dest_files=["res://.godot/imported/big_demon_idle_anim_f3.png-8fa810558cbcbc6d0b1e609f9255cd76.ctex"]
+source_file="res://assets/mobs/demonBoss/big_demon_idle_anim_f2.png"
+dest_files=["res://.godot/imported/big_demon_idle_anim_f2.png-fc45978147acef20809115ebebe2cba6.ctex"]
 
 [params]
 

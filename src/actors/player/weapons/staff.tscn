@@ -51,3 +51,8 @@ flip_h = true
 libraries = {
 "": SubResource("AnimationLibrary_an8an")
 }
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

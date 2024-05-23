@@ -108,12 +108,12 @@ shape = SubResource("RectangleShape2D_pw3gj")
 
 [node name="Weapons" type="Node2D" parent="."]
 
+[node name="Sword" parent="Weapons" instance=ExtResource("7_jjnjq")]
+
 [node name="Staff" parent="Weapons" node_paths=PackedStringArray("player") instance=ExtResource("7_2325t")]
+visible = false
 position = Vector2(12, 8)
 player = NodePath("../..")
-
-[node name="Sword" parent="Weapons" instance=ExtResource("7_jjnjq")]
-visible = false
 
 [node name="RollTimer" type="Timer" parent="."]
 
